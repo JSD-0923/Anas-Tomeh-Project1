@@ -15,6 +15,7 @@ li {
 /* base styles */
 body {
     font-family: 'Nunito Sans', sans-serif;
+    background-color: var(--pg_body);
 }
 
 .p {
@@ -63,7 +64,8 @@ select{
 }
 
 .header {
-    margin: 1.5rem 1rem 1.5rem 1rem;
+    padding: 1.5rem 1rem 1.5rem 1rem;
+    background-color: var(--bg_default);
 }
 
 .header-content {
@@ -123,9 +125,10 @@ select{
     z-index: 1;
 }
 .welcome-title {
-    margin: 1rem;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
+    background-color: var(--bg_default);
 }
 
 .welcome-title h1 {
@@ -190,6 +193,7 @@ select{
     display: flex;
     flex-direction: column;
     width: 50%;
+    color: var(--body-text);
 }
 
 .search-dropdown-list:first-child select {
@@ -211,13 +215,12 @@ select{
 }
 
 .search-results-cards {
-    background-color: var(--bg_default);
     margin: 1rem;
-    border-radius: .5rem;
 }
 
 .course-card{
-    border-radius: .5rem;
+    background-color: var(--bg_default);
+    border-radius: 0.5rem;
 }
 .course-image-container {
     display: flex;
@@ -228,6 +231,7 @@ select{
     overflow: hidden;
     margin-bottom: 1rem;
     border-radius: .5rem .5rem 0  0 ;
+    background-color: var(--bg_default);
 }
 
 .course-image {
@@ -258,7 +262,7 @@ select{
 
 .author {
     color: #848484;
-    margin: 1rem;
+    padding: 1rem;
     font-size: .7rem;
 }
 

@@ -7,5 +7,10 @@
     --pg_body: #F0F9FF;
     --lines-color: #DDDDDD;
     --body-text: #333333;
-    --heart-color: #DC143C
+    --heart-color: #DC143C;
+    --bg_default-dark-mode: #1A1A1A;
+    --bg_body-dark-mode: #282828;
+    --lines-color-dark-mode: #000000;
+    --body-text-drak-mode: #EDEDED;
+    --heart-color-dark-mode: #DC143C
 }
