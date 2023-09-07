@@ -264,27 +264,20 @@ select{
 
 
 /* Small tablets and devices between 321px and 768px wide styles */
-
 @media screen and (min-width: 481px) and (max-width: 768px) {
 }
 
 
 /* Laptop and devices between 769px and 1200px wide styles */
-
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-    /* Your CSS rules for laptops go here */
 }
 
-/*   */
-/* Desktop and devices wider than 1200px styles */
 
+/* Desktop and devices wider than 1200px styles */
 @media screen and (min-width: 1025px) and (max-width: 1200px) {
-    /* Your CSS rules for desktops go here */
 }
 
 /* Extra Large Screens */
-
 @media screen and (min-width: 1201px)  {
-    /* Your CSS rules for desktops go here */
 }
 
