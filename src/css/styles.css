@@ -12,10 +12,29 @@ li {
     list-style-type: none;
 }
 
+:root {
+    --brand-primary-color: var(--brand-primary);
+    --brand-secondry-color: var(--brand-secondary);
+    --background-default : var(--bg_default);
+    --background-body: var(--pg_body);
+    --lines-color-var: var(--lines-color);
+    --body-text-var: var(--body-text);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background-default : var(--bg_default-dark-mode);
+        --background-body: var(--bg_body-dark-mode);
+        --lines-color-var: var(--lines-color-dark-mode);
+        --body-text-var: var(--body-text-drak-mode);
+    }
+
+}
+
 /* base styles */
 body {
     font-family: 'Nunito Sans', sans-serif;
-    background-color: var(--pg_body);
+    background-color: var(--background-body);
 }
 
 .p {
@@ -29,28 +48,29 @@ body {
     display: flex;
     align-items: center;
     padding: .6rem;
-    background-color: var(--bg_default);
-    border: 1px solid var(--lines-color);
+    background-color: var(--background-default);
+    border: 1px solid var(--lines-color-var);
     border-radius: .25rem;
-    color: var(--body-text);
+    color: var(--body-text-var);
     width: 2.5rem;
 }
 
 label{
     font-size: .7rem;
-    color: var(--body-text);
-    border: 1px solid var(--lines-color);
+    color: var(--body-text-var);
+    border: 1px solid var(--lines-color-var);
     border-bottom: none;
     padding: .4rem 0 0 1rem;
-    background-color: var(--bg_default);
+    background-color: var(--background-default);
 }
 
 select{
     font-size: .9rem;
-    color: var(--body-text);
-    border: 1px solid var(--lines-color);
+    color: var(--body-text-var);
+    border: 1px solid var(--lines-color-var);
     border-top: none;
     padding: 0 0 .5rem .8rem;
+    background-color: var(--background-default);
 }
 
 .select option {
@@ -60,12 +80,12 @@ select{
 .vertical-space {
     padding-bottom: .75rem;
     padding-top: .75rem;
-    background-color: var(--pg_body);;
+    background-color: var(--background-body);;
 }
 
 .header {
     padding: 1.5rem 1rem 1.5rem 1rem;
-    background-color: var(--bg_default);
+    background-color: var(--background-default);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -73,7 +93,7 @@ select{
 }
 
 .header h1{
-    color: var(--brand-primary);
+    color: var(--brand-primary-color);
     font-size: 1.2rem;
     font-weight: lighter;
 }
@@ -90,8 +110,8 @@ select{
 }
 
 .web-controls button:active, .web-controls-mobile button:active {
-    background-color: var(--brand-primary);
-    color: var(--bg_default);
+    background-color: var(--brand-primary-color);
+    color: var(--background-default);
 }
 
 .web-controls button ion-icon {
@@ -102,14 +122,14 @@ select{
     display: flex;
     flex-direction: row;
     overflow: hidden;
-    background: linear-gradient(to right, var(--brand-primary), var(--brand-secondary))
+    background: linear-gradient(to right, var(--brand-primary-color), var(--brand-secondry-color))
 }
 .left-triangle {
     width: 0;
     height: 0;
     border-left: 50vw solid transparent;
     border-right: 50vw solid transparent;
-    border-bottom: 2vh solid white;
+    border-bottom: 2vh solid var(--background-default);
     padding-bottom: 2vh;
 }
 .right-triangle {
@@ -124,15 +144,15 @@ select{
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    background-color: var(--bg_default);
+    background-color: var(--background-default);
 }
 
 .welcome-title h2 {
-    color: var(--brand-secondary);
+    color: var(--brand-secondry-color);
 }
 
 .welcome-title p {
-    color: var(--body-text);
+    color: var(--body-text-var);
     font-size: .8rem;
     text-align: left;
 
@@ -147,7 +167,7 @@ select{
 }
 
 .search-fields {
-    background-color: var(--pg_body);
+    background-color: var(--background-body);
     padding-right: 1rem;
     padding-bottom: 1rem;
     padding-top: 1rem;
@@ -170,14 +190,14 @@ select{
 
 
 .search-box-mobile button:active {
-    background-color: var(--brand-primary);
-    color: var(--bg_default);
+    background-color: var(--brand-primary-color);
+    color: var(--background-default);
 }
 
 .search-field input {
     height: 2rem;
-    background-color: var(--bg_default);
-    border: 1px solid var(--lines-color);
+    background-color: var(--background-default);
+    border: 1px solid var(--lines-color-var);
     border-radius: 0 .3rem 0 0;
     border-left: none;
     width: 90%;
@@ -192,7 +212,8 @@ select{
     display: flex;
     flex-direction: column;
     width: 50%;
-    color: var(--body-text);
+    color: var(--body-text-var);
+    background-color: var(--background-body);
 }
 
 .search-dropdown-list:first-child select {
@@ -204,14 +225,14 @@ select{
 }
 
 .search-results {
-    background-color: var(--pg_body);
+    background-color: var(--background-body);
     padding-bottom: .5rem;
 }
 
 .number-of-results {
     padding-top: 1rem;
     margin: 0 0 1rem 1rem;
-    color: var(--body-text);
+    color: var(--body-text-var);
 }
 
 .search-box {
@@ -223,7 +244,7 @@ select{
 }
 
 .course-card{
-    background-color: var(--bg_default);
+    background-color: var(--background-default);
     border-radius: 0.5rem;
     height: auto;
 }
@@ -245,7 +266,7 @@ select{
 
 .course-title {
     font-size: .8rem;
-    color: var(--body-text);
+    color: var(--body-text-var);
     margin-left: 1rem;
     font-weight: lighter;
 }
@@ -257,7 +278,7 @@ select{
 }
 .language-name {
     font-size: .8rem;
-    color: var(--body-text);
+    color: var(--body-text-var);
     font-weight: bold;
     margin-left: 1rem;
     margin-bottom: 1.2rem;
@@ -331,8 +352,8 @@ select{
 
     .search-box input {
         height: 2.9rem;
-        background-color: var(--bg_default);
-        border: 1px solid var(--lines-color);
+        background-color: var(--background-default);
+        border: 1px solid var(--lines-color-var);
         border-left: none;
         width: 90%;
     }
@@ -432,8 +453,8 @@ select{
 
     .search-box input {
         height: 2.9rem;
-        background-color: var(--bg_default);
-        border: 1px solid var(--lines-color);
+        background-color: var(--background-default);
+        border: 1px solid var(--lines-color-var);
         border-left: none;
         width: 90%;
     }
@@ -522,8 +543,8 @@ select{
 
     .search-box input {
         height: 2.9rem;
-        background-color: var(--bg_default);
-        border: 1px solid var(--lines-color);
+        background-color: var(--background-default);
+        border: 1px solid var(--lines-color-var);
         border-left: none;
         width: 90%;
     }
@@ -614,8 +635,8 @@ select{
 
     .search-box input {
         height: 2.9rem;
-        background-color: var(--bg_default);
-        border: 1px solid var(--lines-color);
+        background-color: var(--background-default);
+        border: 1px solid var(--lines-color-var);
         border-left: none;
         width: 90%;
     }
