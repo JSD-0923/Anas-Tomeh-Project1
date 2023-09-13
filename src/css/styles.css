@@ -31,6 +31,13 @@ li {
 
 }
 
+.dark-mode {
+    --background-default : var(--bg_default-dark-mode);
+    --background-body: var(--bg_body-dark-mode);
+    --lines-color-var: var(--lines-color-dark-mode);
+    --body-text-var: var(--body-text-drak-mode);
+}
+
 /* base styles */
 body {
     font-family: 'Nunito Sans', sans-serif;
@@ -115,7 +122,7 @@ select{
 }
 
 .web-controls button ion-icon {
-    margin-right: .5rem;
+    margin-right: 8px;
 }
 
 .top-page-design {
@@ -132,14 +139,7 @@ select{
     border-bottom: 2vh solid var(--background-default);
     padding-bottom: 2vh;
 }
-.right-triangle {
-    width: 500vw;
-    height: .48vh;
-    padding-bottom: 1.5vh;
-    margin-left: -50vw;
-    margin-bottom: -2vh;
-    z-index: 1;
-}
+
 .welcome-title {
     padding: 1rem;
     display: flex;
@@ -160,7 +160,7 @@ select{
 
 .search-field {
     display: flex;
-    margin-left: 1rem;
+    margin-left: 16px;
     z-index: -1;
     box-shadow: 0 0 5px rgba(128, 128, 128, 0.5);
     border-radius: .5rem;
@@ -230,8 +230,8 @@ select{
 }
 
 .number-of-results {
-    padding-top: 1rem;
-    margin: 0 0 1rem 1rem;
+    padding-top: 16px;
+    margin: 0 0 16px 16px;
     color: var(--body-text-var);
 }
 
@@ -240,7 +240,7 @@ select{
 }
 
 .search-results-cards {
-    margin: 1rem;
+    margin: 16px;
 }
 
 .course-card{
@@ -267,7 +267,7 @@ select{
 .course-title {
     font-size: .8rem;
     color: var(--body-text-var);
-    margin-left: 1rem;
+    margin-left: 16px;
     font-weight: lighter;
 }
 
@@ -280,20 +280,20 @@ select{
     font-size: .8rem;
     color: var(--body-text-var);
     font-weight: bold;
-    margin-left: 1rem;
-    margin-bottom: 1.2rem;
+    margin-left: 16px;
+    margin-bottom: 19px;
 }
 
 .rating-stars {
     color: #e5971b;
-    margin-left: 1rem;
+    margin-left: 16px;
 }
 
 .author {
     color: #848484;
     font-size: .7rem;
-    margin-left: 1rem;
-    margin-bottom: .7rem;
+    margin-left: 16px;
+    margin-bottom: 11px;
 }
 
 
@@ -366,7 +366,7 @@ select{
         flex-wrap: wrap;
         row-gap: 1rem;
         margin: 0;
-        padding-left: 1rem;
+        padding-left: 16px;
     }
 
     .course-card {
@@ -473,7 +473,7 @@ select{
     }
 
     .course-card:nth-child(n) {
-        margin-bottom: 1rem;
+        margin-bottom: 16px;
     }
 
     .course-image-container {
@@ -566,11 +566,11 @@ select{
     .course-card {
         max-width: 25%;
         height: 254px;
-        margin-left: 1rem;
+        margin-left: 16px;
     }
 
     .course-card:nth-child(n) {
-        margin-bottom: .5rem;
+        margin-bottom: 8px;
     }
 
 }
@@ -658,11 +658,11 @@ select{
     .course-card {
         max-width: 20%;
         height: 254px;
-        margin-left: 1rem;
+        margin-left: 16px;
     }
 
     .course-card:nth-child(n) {
-        margin-bottom: .5rem;
+        margin-bottom: 8px;
     }
     
 }
