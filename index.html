@@ -13,25 +13,30 @@
 </head>
 <body>
 <header class="header">
-            <h1>Web Topics</h1>
-        <div class="web-controls-mobile">
-            <button class="button" id="toggleDarkModeButtonMobile"><ion-icon name="moon-outline"></ion-icon></button>
-            <button class="button"><ion-icon name="heart-outline"></ion-icon></button>
-        </div>
-        <div class="web-controls">
-            <button class="button" id="toggleDarkModeButton"><ion-icon name="moon-outline"></ion-icon> Dark Mode</button>
-            <button class="button"><ion-icon name="heart-outline"></ion-icon> Favourites</button>
-        </div>
+     <div class="first-part">
+         <h1>Web Topics</h1>
+         <div class="web-controls-mobile">
+             <button class="button" id="toggleDarkModeButtonMobile"><ion-icon name="moon-outline"></ion-icon></button>
+             <button class="button"><ion-icon name="heart-outline"></ion-icon></button>
+         </div>
+         <div class="web-controls">
+             <button class="button" id="toggleDarkModeButton"><ion-icon name="moon-outline"></ion-icon> Dark Mode</button>
+             <button class="button"><ion-icon name="heart-outline"></ion-icon> Favourites</button>
+         </div>
+     </div>
+    <div class="second-part">
+        <section class="top-page-design">
+            <div class="triangle"></div>
+            <div class="triangle-2"></div>
+        </section>
+        <section class="welcome-title">
+            <h2>Welcome to our website!</h2>
+            <p>We have a new design that's fresh, modern, and easy to use.</p>
+        </section>
+    </div>
 </header>
 <main class="container">
-  <section class="top-page-design">
-      <div class="left-triangle"></div>
-      <div class="right-triangle"></div>
-  </section>
-  <section class="welcome-title">
-    <h2>Welcome to our website!</h2>
-    <p>We have a new design that's fresh, modern, and easy to use.</p>
-  </section>
+
   <section class="search-box-mobile">
     <form >
         <div class="search-field">
@@ -66,7 +71,7 @@
   </section>
     <section class="search-box">
         <form >
-                <button class="button"><ion-icon name="search-outline"></ion-icon></button>
+                <button class="button"><ion-icon name="search-outline" style="font-size: 26px;"></ion-icon></button>
                 <input placeholder="Search the website..."/>
                 <div class="search-dropdown-list">
                     <label>Sort by:</label>
@@ -98,21 +103,21 @@
            <div class="course-image-container">
                <img class="course-image" src="./assets/Logos/html.png" alt="Course Image">
            </div>
-        <div class="card-info">
-            <h2 class="course-title">Web Development Languages</h2>
-            <p class="language-name">HTML</p>
-            <div class="rating-stars">
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star-outline"></ion-icon>
+           <div class="card-info">
+               <h2 class="course-title">Web Development Languages</h2>
+               <p class="language-name">HTML</p>
+               <div class="rating-stars">
+                   <ion-icon name="star"></ion-icon>
+                   <ion-icon name="star"></ion-icon>
+                   <ion-icon name="star"></ion-icon>
+                   <ion-icon name="star"></ion-icon>
+                   <ion-icon name="star-outline"></ion-icon>
 
-            </div>
-            <footer>
-                <p class="author">Author: Sarah Smith</p>
-            </footer>
-        </div>
+               </div>
+               <footer>
+                   <p class="author">Author: Sarah Smith</p>
+               </footer>
+           </div>
     </section>
         <div class="vertical-space"></div>
        <section class="course-card">
@@ -532,14 +537,14 @@
               <footer>
                   <p class="author">Author: Victoria Kim</p>
               </footer>
-           </div>§
+           </div>
     </section>
         <div class="vertical-space"></div>
        <section class="course-card">
            <div class="course-image-container">
                <img class="course-image" src="./assets/Logos/responsive.gif" alt="Course Image">
            </div>
-        <div>§§
+        <div class="card-info">
             <h2 class="course-title">Web Development Concepts Technologies</h2>
             <p class="language-name">Responsive Design</p>
             <div class="rating-stars">
@@ -548,7 +553,6 @@
                 <ion-icon name="star"></ion-icon>
                 <ion-icon name="star"></ion-icon>
                 <ion-icon name="star-outline"></ion-icon>
-
             </div>
           <footer>
               <p class="author">Author: Ryan Jones</p>
@@ -558,7 +562,11 @@
     </div>
   </section>
 </main>
-<footer></footer>
+<footer>
+    <div class="copyrights">
+        <p>Developed with ❤️ © 2023</p>
+    </div>
+</footer>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script>

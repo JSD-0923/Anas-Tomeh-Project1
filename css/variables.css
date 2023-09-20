@@ -13,4 +13,14 @@
     --lines-color-dark-mode: #000000;
     --body-text-drak-mode: #EDEDED;
     --heart-color-dark-mode: #DC143C;
+    --font-weight-light: 200;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    --m: 16px;
+    --xs: calc(var(--m) * 0.25);
+    --sm: calc(var(--m) * 0.7);
+    --md: var(--m);
+    --lg: calc(var(--m) * 1.2);
+    --xl: calc(var(--m) * 2);
+    --xxl: calc(var(--m) * 3);
 }
