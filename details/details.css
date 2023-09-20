@@ -44,6 +44,13 @@ body {
     background-color: var(--background-body);
 }
 
+.container {
+    max-width: 1400px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .p {
     font-size: var(--md);
 }
@@ -334,7 +341,8 @@ table td::before {
 
     }
     .course-image-container {
-        background-color: red;
+        background-color: white;
+        border:1px #333333;
     }
     .add-to-favorite-box button {
         width: 90%;
@@ -436,7 +444,8 @@ table td::before {
         z-index: 9999;
     }
     .course-image-container {
-        background-color: red;
+        background-color: white;
+        border:1px #333333;
     }
     .add-to-favorite-box button {
         width: 90%;
@@ -525,7 +534,8 @@ table td::before {
         z-index: 9999;
     }
     .course-image-container {
-        background-color: red;
+        background-color: white;
+        border:1px #333333;
     }
     .add-to-favorite-box button {
         width: 90%;
@@ -611,7 +621,8 @@ table td::before {
         z-index: 9999;
     }
     .course-image-container {
-        background-color: red;
+        background-color: white;
+        border:1px #333333;
     }
     .add-to-favorite-box button {
         width: 90%;

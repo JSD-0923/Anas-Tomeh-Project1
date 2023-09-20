@@ -44,6 +44,13 @@ body {
     background-color: var(--background-body);
 }
 
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    flex-direction: column;
+    padding: 15px;
+}
+
 .p {
     font-size: var(--md);
 }
@@ -54,7 +61,7 @@ body {
     font-size: var(--md);
     display: flex;
     align-items: center;
-    padding: .6rem;
+    padding: 10px;
     background-color: var(--background-default);
     border: 1px solid var(--lines-color-var);
     border-radius: .25rem;
@@ -68,9 +75,11 @@ label{
     color: var(--body-text-var);
     border: 1px solid var(--lines-color-var);
     border-bottom: none;
-    padding: .4rem 0 0 1rem;
+    padding: 6px 0 0 16px;
     background-color: var(--background-default);
     white-space: nowrap;
+    border-left: none;
+    height: 50%;
 }
 
 select{
@@ -78,20 +87,20 @@ select{
     color: var(--body-text-var);
     border: 1px solid var(--lines-color-var);
     border-top: none;
-    padding: 0 0 .5rem .2rem;
+    border-left: none;
     background-color: var(--background-default);
-
+    height: 50%;
 }
 
 
 .vertical-space {
-    padding-bottom: .75rem;
-    padding-top: .75rem;
+    padding-bottom: 12px;
+    padding-top: 12px;
     background-color: var(--background-body);;
 }
 
 .first-part {
-    padding: 1.5rem 1rem 1.5rem 1rem;
+    padding: 24px 16px 24px 16px;
     background-color: var(--background-default);
     display: flex;
     flex-direction: row;
@@ -148,7 +157,7 @@ select{
 }
 
 .welcome-title {
-    padding: 1rem;
+    padding: 16px;
     display: flex;
     flex-direction: column;
     background-color: var(--background-default);
@@ -175,20 +184,20 @@ select{
 
 .search-fields {
     background-color: var(--background-body);
-    padding-right: 1rem;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
+    padding-right: 16px;
+    padding-bottom: 16px;
+    padding-top: 16px;
 }
 
 .search-box-mobile form {
-   padding-right: 1rem;
-    padding-top: 1rem;
+   padding-right: 16px;
+    padding-top: 16px;
 }
 
 .search-box-mobile button {
 
-    padding: 0 0 0 .3rem;
-    border-radius: .3rem 0 0 0;
+    padding: 0 0 0 5px;
+    border-radius: 5px 0 0 0;
     border-right: none;
 }
 
@@ -231,7 +240,7 @@ select{
 
 .search-results {
     background-color: var(--background-body);
-    padding-bottom: .5rem;
+    padding-bottom: 8px;
 }
 
 .number-of-results {
@@ -279,7 +288,7 @@ select{
 
 .card-info {
     display: flex;
-    padding-top: 1rem;
+    padding-top: 16px;
     flex-direction: column;
 }
 .language-name {
@@ -340,23 +349,24 @@ select{
     }
 
     .search-box form {
-        padding-top: 1rem;
+        padding-top: 16px;
         display: flex;
         align-items: center;
-        padding-right: 1rem;
-        padding-left: 1rem;
+        padding-right: 16px;
+        padding-left: 16px;
     }
 
     .search-box button {
-        height: 3.05rem;
-        padding: 0 0 0 0.8rem;
+        height: 50px;
+        padding: 0 0 0 13px;
         border-right: none;
     }
 
     .search-box .search-dropdown-list {
         width: 22%;
-        height: 3rem;
+        height: 50px;
         font-weight: var(--font-weight-light);
+        border-left: none;
     }
 
     .search-dropdown-list:last-child label {
@@ -364,7 +374,7 @@ select{
     }
 
     .search-box input {
-        height: 2.9rem;
+        height: 48px;
         background-color: var(--background-default);
         border: 1px solid var(--lines-color-var);
         border-left: none;
@@ -443,24 +453,25 @@ select{
     }
 
     .search-box form {
-        padding-top: 1rem;
+        padding-top: 16px;
         display: flex;
         align-items: center;
-        padding-right: 1rem;
-        padding-left: 1rem;
+        padding-right: 16px;
+        padding-left: 16px;
     }
 
     .search-box button {
-        height: 3.05rem;
-        padding: 0 0 0 0.8rem;
-        border-radius: 0.3rem 0 0 0;
+        height: 50px;
+        padding: 0 0 0 13px;
+        border-radius: 5px 0 0 0;
         border-right: none;
     }
 
     .search-box .search-dropdown-list {
+        height: 50px;
         width: 15%;
-        height: 3rem;
         font-weight: var(--font-weight-light);
+        border-left: none;
     }
 
     .search-dropdown-list:last-child label {
@@ -468,7 +479,7 @@ select{
     }
 
     .search-box input {
-        height: 2.9rem;
+        height: 48px;
         background-color: var(--background-default);
         border: 1px solid var(--lines-color-var);
         border-left: none;
@@ -482,7 +493,7 @@ select{
         flex-wrap: wrap;
         row-gap: 1rem;
         margin: 0;
-        padding-left: 1rem;
+        padding-left: 16px;
     }
     .course-card {
         width: 45%;
@@ -524,7 +535,7 @@ select{
     }
 
     .welcome-title p {
-        padding-left: 10rem;
+        padding-left: 160px;
     }
 
     .search-box-mobile {
@@ -536,17 +547,17 @@ select{
     }
 
     .search-box form {
-        padding-top: 1rem;
+        padding-top: 16px;
         display: flex;
         align-items: center;
-        padding-right: 1rem;
-        padding-left: 1rem;
+        padding-right: 16px;
+        padding-left: 16px;
     }
 
     .search-box button {
         height: 3.05rem;
-        padding: 0 0 0 0.8rem;
-        border-radius: 0.3rem 0 0 0;
+        padding: 0 0 0 13px;
+        border-radius: 5px 0 0 0;
         border-right: none;
     }
 
@@ -554,6 +565,7 @@ select{
         width: 15%;
         height: 3rem;
         font-weight: var(--font-weight-light);
+        border-left: none;
     }
 
     .search-dropdown-list:last-child label {
@@ -633,7 +645,7 @@ select{
     }
 
     .welcome-title p {
-        padding-left: 15rem;
+        padding-left: 240px;
         font-size: var(--lg);
     }
 
@@ -646,16 +658,16 @@ select{
     }
 
     .search-box form {
-        padding-top: 1rem;
+        padding-top: 16px;
         display: flex;
         align-items: center;
-        padding-right: 1rem;
-        padding-left: 1rem;
+        padding-right: 16px;
+        padding-left: 16px;
     }
 
     .search-box button {
         height: 3.05rem;
-        padding: 0 0 0 0.8rem;
+        padding: 0 0 0 13px;
         border-radius: 0.3rem 0 0 0;
         border-right: none;
     }
@@ -664,6 +676,7 @@ select{
         width: 15%;
         height: 3rem;
         font-weight: var(--font-weight-light);
+        border-left: none;
     }
 
     .search-dropdown-list:last-child label {
