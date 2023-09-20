@@ -99,7 +99,7 @@ select{
     background-color: var(--background-body);;
 }
 
-.first-part {
+.header-first-part {
     padding: 24px 16px 24px 16px;
     background-color: var(--background-default);
     display: flex;
@@ -108,7 +108,7 @@ select{
     align-items: center;
 }
 
-.first-part h1{
+.header-first-part h1{
     color: var(--brand-primary-color);
     font-size: var(--lg);
     font-weight: var(--font-weight-light);
