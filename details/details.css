@@ -49,6 +49,7 @@ body {
     display: flex;
     justify-content: center;
     flex-direction: column;
+    margin: auto;
 }
 
 .p {
@@ -190,7 +191,6 @@ a {
 }
 
 .add-to-favorite-box button {
-    font-size: 22px;
     display: flex;
     align-items: center;
     justify-content: center; /* Center text horizontally */
@@ -562,7 +562,7 @@ table td::before {
     .button {
         font-size: var(--sm);
         border-radius: 7px;
-        width: 112px;
+        width: 120px;
     }
 
     .web-controls-mobile {
@@ -627,14 +627,18 @@ table td::before {
     .add-to-favorite-box button {
         width: 90%;
     }
+    .second-content {
+        display: flex;
+        align-items: flex-start;
+    }
 
     .course-topics {
         display: flex;
         justify-content: flex-start;
     }
     .course-topics table {
-        width: 37vw;
-        margin-left: 21vw;
+        width: 30vw;
+        margin-left: 30px;
     }
 
     .course-topics table th {
