@@ -21,6 +21,11 @@ li {
     --body-text-var: var(--body-text);
 }
 
+/*
+   Media Query for Dark Mode Preferences:
+   Adjusts custom CSS variables for dark mode when
+   the user prefers a dark color scheme.
+*/
 @media (prefers-color-scheme: dark) {
     :root {
         --background-default : var(--bg_default-dark-mode);
@@ -31,6 +36,7 @@ li {
 
 }
 
+/*Dark Mode colors*/
 .dark-mode {
     --background-default : var(--bg_default-dark-mode);
     --background-body: var(--bg_body-dark-mode);
@@ -42,20 +48,26 @@ li {
 body {
     font-family: 'Nunito Sans', sans-serif;
     background-color: var(--background-body);
+    overflow-x: hidden;
 }
 
 .container {
+    display: flex;
     max-width: 1400px;
     margin: 0 auto;
     flex-direction: column;
-    padding: 15px;
+    padding: 20px;
+    justify-content: center;
+    gap: 15px;
 }
 
 .p {
     font-size: var(--md);
 }
 
-/* mobile styles up to 320px - 480px*/
+
+/* Mobile First Approach*/
+/* small mobiles styles 320px - 425px*/
 
 .button{
     font-size: var(--md);
@@ -66,16 +78,13 @@ body {
     border: 1px solid var(--lines-color-var);
     border-radius: .25rem;
     color: var(--body-text-var);
-    width: 2.5rem;
     cursor: pointer;
 }
 
 label{
     font-size: var(--sm);
     color: var(--body-text-var);
-    border: 1px solid var(--lines-color-var);
-    border-bottom: none;
-    padding: 6px 0 0 16px;
+    padding: 5px 0 0 15px;
     background-color: var(--background-default);
     white-space: nowrap;
     border-left: none;
@@ -85,11 +94,12 @@ label{
 select{
     font-size: calc(.9 * var(--md));
     color: var(--body-text-var);
-    border: 1px solid var(--lines-color-var);
-    border-top: none;
-    border-left: none;
+    border: none;
     background-color: var(--background-default);
     height: 50%;
+    width: 80px;
+    padding-left: 5px;
+    padding-bottom: 5px;
 }
 
 
@@ -99,6 +109,7 @@ select{
     background-color: var(--background-body);;
 }
 
+/*Header Style*/
 .header-first-part {
     padding: 24px 16px 24px 16px;
     background-color: var(--background-default);
@@ -142,7 +153,7 @@ select{
 
 .triangle {
     width: 100%;
-    height: 40px;
+    height: 25px;
     background: linear-gradient(to right, #066caa 0%, #04849d 20%, #03a08d 100%);
     clip-path: polygon(0 0, 0% 100%, 110% 0);
     position: absolute;
@@ -150,14 +161,14 @@ select{
 }
 .triangle-2 {
     width: 100%;
-    height: 40px;
+    height: 25px;
     background-color: var(--brand-secondry-color);
     clip-path: polygon(0 0, 100% 100%, 120% 0);
     z-index: 0;
 }
 
 .welcome-title {
-    padding: 16px;
+    padding: 0 16px 16px 16px;
     display: flex;
     flex-direction: column;
     background-color: var(--background-default);
@@ -174,69 +185,60 @@ select{
 
 }
 
-.search-field {
+/*Search Section Styles*/
+.search-box form {
     display: flex;
-    margin-left: 16px;
-    z-index: -1;
-    box-shadow: 0 0 5px rgba(128, 128, 128, 0.5);
-    border-radius: .5rem;
-}
-
-.search-fields {
-    background-color: var(--background-body);
-    padding-right: 16px;
-    padding-bottom: 16px;
-    padding-top: 16px;
-}
-
-.search-box-mobile form {
-   padding-right: 16px;
-    padding-top: 16px;
-}
-
-.search-box-mobile button {
-
-    padding: 0 0 0 5px;
-    border-radius: 5px 0 0 0;
-    border-right: none;
-}
-
-
-
-.search-box-mobile button:active {
-    background-color: var(--brand-primary-color);
-    color: var(--background-default);
-}
-
-.search-field input {
-    height: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0 16px 0 16px;
+    box-shadow: 0 0 10px rgba(128, 128, 128, 0.5);
     background-color: var(--background-default);
-    border: 1px solid var(--lines-color-var);
-    border-radius: 0 .3rem 0 0;
-    border-left: none;
-    width: 90%;
+    border-radius: 0.5rem;
+}
+.searchInput {
+    display: none;
 }
 
-.search-box-mobile input::placeholder {
-    font-size: calc(1.1 * var(--sm));
-    text-align: left;
+.search-box button {
+    height: 40px;
+    max-width: 40px;
+    border: none;
+    flex-grow: 1;
+    border-radius: 0.5rem;
+}
+
+.search-box input {
+    min-width: 60vw;
+    height: 40px;
+    border: none;
+    background-color: var(--background-default);
+    flex-grow: 1;
+    border-radius: 0.5rem;
+}
+
+.search-box input::placeholder {
+    color: var(--body-text-var);
 }
 
 .search-dropdown-list {
+    flex:1;
     display: flex;
     flex-direction: column;
-    width: 50%;
-    color: var(--body-text-var);
-    background-color: var(--background-body);
+    height: 40px;
+    border-top: 1px solid var(--lines-color-var);
 }
 
-.search-dropdown-list:first-child select {
+.search-dropdown-list:first-of-type {
+    border-right: 1px solid var(--lines-color-var);
+}
+
+.search-dropdown-list select {
     border-radius: 0 0 0 .5rem;
 }
-
 .search-dropdown-list:last-child select {
     border-radius: 0 0 .5rem 0;
 }
+
 
 .search-results {
     background-color: var(--background-body);
@@ -244,15 +246,11 @@ select{
 }
 
 .number-of-results {
-    padding-top: 16px;
     margin: 0 0 16px 16px;
     color: var(--body-text-var);
 }
 
-.search-box {
-    display: none;
-}
-
+/* Search Results Style*/
 .search-results-cards {
     margin: 16px;
 }
@@ -311,14 +309,16 @@ select{
     margin-bottom: 11px;
 }
 
+/*Footer Style*/
 .copyrights {
     margin-top: 16px;
     margin-bottom: 16px;
     text-align: center;
+    color: var(--body-text-var);
 }
 
 /* Small tablets and devices between 481 and 768px wide styles */
-@media screen and (min-width: 481px) and (max-width: 768px) {
+@media screen and (min-width: 425px) and (max-width: 768px) {
 
     .button {
         font-size: var(--sm);
@@ -336,66 +336,38 @@ select{
         gap: 0.3rem;
         height: 1.8rem;
     }
+    .triangle {
+        height: 30px;
+    }
+    .triangle-2 {
+        height: 30px;
+    }
     .welcome-title {
         align-items: center;
-    }
-
-    .search-box-mobile {
-        display: none;
-    }
-
-    .search-box {
-        display: initial;
-    }
-
-    .search-box form {
-        padding-top: 16px;
-        display: flex;
-        align-items: center;
-        padding-right: 16px;
-        padding-left: 16px;
-    }
-
-    .search-box button {
-        height: 50px;
-        padding: 0 0 0 13px;
-        border-right: none;
-    }
-
-    .search-box .search-dropdown-list {
-        width: 22%;
-        height: 50px;
-        font-weight: var(--font-weight-light);
-        border-left: none;
-    }
-
-    .search-dropdown-list:last-child label {
-        border-top-right-radius: .3rem;
+        margin-top: -5px;
     }
 
     .search-box input {
-        height: 48px;
-        background-color: var(--background-default);
-        border: 1px solid var(--lines-color-var);
-        border-left: none;
-        width: 60%;
+        min-width: 310px;
+    }
+    .search-dropdown-list {
+        border-top: none;
     }
 
-    .search-results-cards {
+    .search-results {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
-        row-gap: 1rem;
-        margin: 0;
-        padding-left: 16px;
     }
 
     .course-card {
         display: flex;
         flex-direction: column;
-        width: 80vw;
+        width: 410px;
+    }
+
+    .number-of-results {
+        align-self: flex-start;
     }
     .course-image-container {
         height: 25vh;
@@ -414,6 +386,32 @@ select{
         font-size: calc(.9 * var(--md));
     }
 }
+
+
+/*Custom screen code for styling search box section*/
+@media screen and (min-width: 492px) and (max-width: 561px) {
+    .search-box input {
+        min-width: 380px;
+    }
+}
+
+/*Custom screen code for styling search box section*/
+@media screen and (min-width: 562px) {
+    .search-dropdown-list select {
+        border-radius: 0 ;
+        border: none;
+    }
+    .search-dropdown-list label {
+        border: none;
+    }
+    .search-dropdown-list:last-child select {
+        border-radius: 0 0 .5rem 0;
+    }
+    .search-dropdown-list:last-child label {
+        border-radius: 0 .5rem 0 0 ;
+    }
+}
+
 
 
 /* Laptop and devices between 769px and 1200px wide styles */
@@ -436,54 +434,27 @@ select{
         height: 1.8rem;
     }
 
-    .search-field input {
-        width: 100%;
+    .triangle {
+        height: 40px;
+    }
+    .triangle-2 {
+        height: 40px;
     }
 
     .welcome-title {
         align-items: center;
+        margin-top: -5px;
     }
-
-    .search-box-mobile {
-        display: none;
-    }
-
-    .search-box {
-        display: initial;
-    }
-
-    .search-box form {
-        padding-top: 16px;
-        display: flex;
+    .welcome-title p{
         align-items: center;
-        padding-right: 16px;
-        padding-left: 16px;
-    }
-
-    .search-box button {
-        height: 50px;
-        padding: 0 0 0 13px;
-        border-radius: 5px 0 0 0;
-        border-right: none;
-    }
-
-    .search-box .search-dropdown-list {
-        height: 50px;
-        width: 15%;
-        font-weight: var(--font-weight-light);
-        border-left: none;
-    }
-
-    .search-dropdown-list:last-child label {
-        border-top-right-radius: .3rem;
+        padding-left: 150px;
     }
 
     .search-box input {
-        height: 48px;
-        background-color: var(--background-default);
-        border: 1px solid var(--lines-color-var);
-        border-left: none;
-        width: 90%;
+        flex: 15;
+    }
+    .search-dropdown-list {
+        border-top: none;
     }
 
     .search-results-cards {
@@ -530,6 +501,13 @@ select{
         height: 1.8rem;
     }
 
+    .triangle {
+        height: 40px;
+    }
+    .triangle-2 {
+        height: 40px;
+    }
+
     .welcome-title {
         align-items: center;
     }
@@ -537,52 +515,10 @@ select{
     .welcome-title p {
         padding-left: 160px;
     }
-
-    .search-box-mobile {
-        display: none;
+    .search-dropdown-list {
+        border-top: none;
     }
 
-    .search-box {
-        display: initial;
-    }
-
-    .search-box form {
-        padding-top: 16px;
-        display: flex;
-        align-items: center;
-        padding-right: 16px;
-        padding-left: 16px;
-    }
-
-    .search-box button {
-        height: 3.05rem;
-        padding: 0 0 0 13px;
-        border-radius: 5px 0 0 0;
-        border-right: none;
-    }
-
-    .search-box .search-dropdown-list {
-        width: 15%;
-        height: 3rem;
-        font-weight: var(--font-weight-light);
-        border-left: none;
-    }
-
-    .search-dropdown-list:last-child label {
-        border-top-right-radius: .3rem;
-    }
-
-    .search-box input {
-        height: 2.9rem;
-        background-color: var(--background-default);
-        border: 1px solid var(--lines-color-var);
-        border-left: none;
-        width: 90%;
-    }
-
-    .search-field input {
-        width: 100%;
-    }
 
     .number-of-results {
         font-size: var(--lg);
@@ -618,7 +554,7 @@ select{
 }
 
 /* Extra Large Screens */
-@media screen and (min-width: 1201px)  {
+@media screen and (min-width: 1201px)   {
 
     .button {
         font-size: var(--sm);
@@ -637,9 +573,17 @@ select{
         height: 1.8rem;
     }
 
+    .triangle {
+        height: 40px;
+    }
+    .triangle-2 {
+        height: 40px;
+    }
+
     .welcome-title {
         align-items: center;
     }
+
     .welcome-title h2 {
         font-size: 25px;
     }
@@ -649,50 +593,13 @@ select{
         font-size: var(--lg);
     }
 
-    .search-box-mobile {
-        display: none;
-    }
-
-    .search-box {
-        display: initial;
-    }
-
-    .search-box form {
-        padding-top: 16px;
-        display: flex;
-        align-items: center;
-        padding-right: 16px;
-        padding-left: 16px;
-    }
-
-    .search-box button {
-        height: 3.05rem;
-        padding: 0 0 0 13px;
-        border-radius: 0.3rem 0 0 0;
-        border-right: none;
-    }
-
-    .search-box .search-dropdown-list {
-        width: 15%;
-        height: 3rem;
-        font-weight: var(--font-weight-light);
-        border-left: none;
-    }
-
-    .search-dropdown-list:last-child label {
-        border-top-right-radius: .3rem;
-    }
 
     .search-box input {
-        height: 2.9rem;
-        background-color: var(--background-default);
-        border: 1px solid var(--lines-color-var);
-        border-left: none;
-        width: 90%;
+        width: 70%;
     }
 
-    .search-field input {
-        width: 100%;
+    .search-dropdown-list {
+        border-top: none;
     }
 
     .search-results-cards {
@@ -708,7 +615,6 @@ select{
 
     .course-card {
         width: calc(20% - 20px);
-        height: 400px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -719,7 +625,7 @@ select{
     }
 
     .course-image-container {
-        height: 200px;
+        height: 125px;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -729,26 +635,35 @@ select{
     }
 
     .course-image {
-        height: 200px;
+        height: 125px;
         width: 100%;
         display: block;
     }
 
+
     .course-title {
-        font-size: var(--lg);
+        font-size: 14px;
     }
 
 
     .language-name {
-        font-size: var(--lg);
+        font-size: 14px;
     }
 
     .rating-stars {
-        font-size: var(--lg);
+        font-size: 14px;
     }
     .author {
-        font-size: var(--lg);
+        font-size: 14px;
     }
 
+}
+
+
+@media screen and (min-width: 1950px)   {
+
+    .search-box input {
+        min-width: 80%;
+    }
 }
 
