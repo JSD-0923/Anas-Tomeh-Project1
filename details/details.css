@@ -19,6 +19,7 @@ li {
     --background-body: var(--pg_body);
     --lines-color-var: var(--lines-color);
     --body-text-var: var(--body-text);
+    --course-details: #282828
 }
 
 @media (prefers-color-scheme: dark) {
@@ -27,6 +28,7 @@ li {
         --background-body: var(--bg_body-dark-mode);
         --lines-color-var: var(--lines-color-dark-mode);
         --body-text-var: var(--body-text-drak-mode);
+        --course-details: #282828
     }
 
 }
@@ -36,6 +38,7 @@ li {
     --background-body: var(--bg_body-dark-mode);
     --lines-color-var: var(--lines-color-dark-mode);
     --body-text-var: var(--body-text-drak-mode);
+    --course-details: #1a1a1a
 }
 
 /* base styles */
@@ -193,7 +196,7 @@ a {
 .add-to-favorite-box button {
     display: flex;
     align-items: center;
-    justify-content: center; /* Center text horizontally */
+    justify-content: center;
     padding: 10px;
     border: 1px solid var(--lines-color-var);
     border-radius: 4px;
@@ -212,7 +215,7 @@ a {
 .course-details {
     margin: 16px;
     padding: 16px;
-    background-color: #282828;
+    background-color: var(--course-details);
     display: flex;
     flex-direction: column;
 }
@@ -240,6 +243,7 @@ a {
     margin-top: 16px;
     margin-bottom: 16px;
     text-align: center;
+    color: var(--body-text-var);
 }
 .course-topics {
     display: flex;
@@ -271,11 +275,11 @@ table td {
 }
 
 table td::before {
-    content: "✓⃝"; /* Add the checkmark symbol */
-    color: green; /* Make the checkmark green */
-    margin-right: 5px; /* Add some spacing to the right of the checkmark */
-    display: inline-block; /* Ensure the checkmark is inline with the text */
-    vertical-align: middle; /* Vertically align the checkmark in the middle of the row */
+    content: "✓⃝";
+    color: green;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 
@@ -316,9 +320,8 @@ table td::before {
 
     .first-content {
         display: flex;
-
         justify-content: center;
-        background-color: #282828;
+        background-color: var(--course-details);
         height: auto;
     }
 
@@ -425,7 +428,7 @@ table td::before {
     .first-content {
         display: flex;
         justify-content: center;
-        background-color: #282828;
+        background-color: var(--course-details);
         height: 480px;
     }
 
@@ -515,7 +518,7 @@ table td::before {
     .first-content {
         display: flex;
         justify-content: center;
-        background-color: #282828;
+        background-color: var(--course-details);
         height: 320px;
     }
 
@@ -602,7 +605,7 @@ table td::before {
     .first-content {
         display: flex;
         justify-content: center;
-        background-color: #282828;
+        background-color: var(--course-details);
         height: 320px;
     }
 
