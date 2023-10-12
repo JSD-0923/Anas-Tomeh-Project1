@@ -18,12 +18,12 @@
     <div class="header-first-part">
         <h1>Web Topics</h1>
         <div class="web-controls-mobile">
-            <button class="button" id="toggleDarkModeButtonMobile" aria-label="dark mode"><ion-icon name="moon-outline"></ion-icon></button>
-            <button class="button" aria-label="favourite"><ion-icon name="heart-outline"></ion-icon></button>
+            <button class="button" id="toggleThemeModeButtonMobile" onclick="themeMode()" aria-label="dark mode"><ion-icon name="moon-outline"></ion-icon></button>
+            <button class="button" id="favorite-buttonMobile" aria-label="favourite"><ion-icon name="heart-outline"></ion-icon></button>
         </div>
         <div class="web-controls">
-            <button class="button" id="toggleDarkModeButton" aria-label="dark mode"><ion-icon name="moon-outline"></ion-icon> Dark Mode</button>
-            <button class="button" aria-label="favourite"><ion-icon name="heart-outline"></ion-icon> Favourites</button>
+            <button class="button" id="toggleThemeModeButton" onclick="themeMode()" aria-label="dark mode"><ion-icon name="moon-outline"></ion-icon> Dark Mode</button>
+            <button class="button" id="favorite-button" aria-label="favourite"><ion-icon name="heart-outline"></ion-icon> Favourites</button>
         </div>
     </div>
     <div class="header-second-part">
@@ -51,500 +51,77 @@
                 <label for="sort-by">Sort by:</label>
                 <select id="sort-by">
                     <option value="default">Default</option>
-                    <option value="title">Title</option>
-                    <option value="teacher">Section</option>
-                    <option value="adding-date">Rating</option>
-                    <option value="level">Author</option>
+                    <option value="topic-title">Topic Title</option>
+                    <option value="author-name">Author Name</option>
                 </select>
             </div>
             <div class="search-dropdown-list">
                 <label for="filter-by">Filter by:</label>
                 <select id="filter-by">
                     <option value="default">Default</option>
-                    <option value="title">Title</option>
-                    <option value="teacher">Section</option>
-                    <option value="adding-date">Rating</option>
-                    <option value="level">Author</option>
                 </select>
             </div>
         </form>
     </section>
 
+    <div class="loading-indicator">
+        <div class="loader"></div>
+        <h3>Topics are Loading ...</h3>
+    </div>
     <!-- Search Results Section-->
     <section class="search-results" aria-label="search results">
-        <h2 class="number-of-results">"24" Web Topics Found</h2>
+
+        <h2 class="number-of-results"></h2>
         <div class="search-results-cards">
-            <section class="course-card" aria-label="course cards" id="courseCard">
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/html.png" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">Web Development Languages</h2>
-                    <p class="language-name">HTML</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-                    </div>
-                    <footer>
-                        <p class="author">Author: Sarah Smith</p>
-                    </footer>
-                </div>
-            </section>
-            <div class="vertical-space"></div>
-            <section class="course-card" aria-label="single course card">
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/css.webp" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">Web Development Languages</h2>
-                    <p class="language-name">CSS</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-                    </div>
-                    <footer>
-                        <p class="author">Author: David Lee</p>
-                    </footer>
-                </div>
-
-                <!--This div is for applying unified vertical space -->
-            </section>
-            <div class="vertical-space"></div>
-
-            <!-- Course Card Html Structure-->
-            <section class="course-card" aria-label="single course card">
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/javascript.jpg" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">Web Development Languages</h2>
-                    <p class="language-name">JavaScript</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-                    </div>
-                    <footer>
-                        <p class="author">Author: Emily Chen</p>
-                    </footer>
-                </div>
-            </section>
-            <div class="vertical-space"></div>
-            <section class="course-card" aria-label="single course card">
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/jquery.png" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">Frontend Frameworks and Libraries</h2>
-                    <p class="language-name">jQuery</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-
-                    </div>
-                    <footer>
-                        <p class="author">Author: John Johnson</p>
-                    </footer>
-                </div>
-            </section>
-            <div class="vertical-space"></div>
-            <section class="course-card" aria-label="single course card">
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/angular.png" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">Frontend Frameworks and Libraries</h2>
-                    <p class="language-name">Angular</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-
-                    </div>
-                    <footer>
-                        <p class="author">Author: Jessica Davis</p>
-                    </footer>
-                </div>
-            </section>
-            <div class="vertical-space"></div>
-            <section class="course-card" aria-label="single course card">
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/react.webp" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">Frontend Frameworks and Libraries</h2>
-                    <p class="language-name">React</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-
-                    </div>
-                    <footer>
-                        <p class="author">Author: Daniel Brown</p>
-                    </footer>
-                </div>
-            </section>
-            <div class="vertical-space"></div>
-            <section class="course-card" aria-label="single course card">
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/vuejs.jpeg" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">Frontend Frameworks and Libraries</h2>
-                    <p class="language-name">Vue.js</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-
-                    </div>
-                    <footer>
-                        <p class="author">Author: Ava Jones</p>
-                    </footer>
-                </div>
-            </section>
-            <div class="vertical-space"></div>
-            <section class="course-card" aria-label="single course card">
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/nodejs.webp" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">Backend Frameworks and Libraries</h2>
-                    <p class="language-name">Node.js</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-
-                    </div>
-                    <footer>
-                        <p class="author">Author: Michael Kim</p>
-                    </footer>
-                </div>
-            </section>
-            <div class="vertical-space"></div>
-            <section class="course-card" aria-label="single course card">
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/expressjs.webp" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">Backend Frameworks and Libraries</h2>
-                    <p class="language-name">Express.js</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-
-                    </div>
-                    <footer>
-                        <p class="author">Author: Sophia Rodriquez</p>
-                    </footer>
-                </div>
-            </section>
-            <div class="vertical-space"></div>
-            <section class="course-card" aria-label="single course card">
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/ruby.jpeg" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">Backend Frameworks and Libraries</h2>
-                    <p class="language-name">Express.js</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-
-                    </div>
-                    <footer>
-                        <p class="author">Author: William Lee</p>
-                    </footer>
-                </div>
-            </section>
-            <div class="vertical-space"></div>
-            <section class="course-card" aria-label="single course card">
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/django.jpeg" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">Backend Frameworks and Libraries</h2>
-                    <p class="language-name">Django</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-
-                    </div>
-                    <footer>
-                        <p class="author">Author: Olivia Martinez</p>
-                    </footer>
-                </div>
-            </section>
-            <div class="vertical-space"></div>
-            <section class="course-card" aria-label="single course card">
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/flask.webp" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">Backend Frameworks and Libraries</h2>
-                    <p class="language-name">Flas</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-
-                    </div>
-                    <footer>
-                        <p class="author">Author: Ethan Thompson</p>
-                    </footer>
-                </div>
-            </section>
-            <div class="vertical-space"></div>
-            <section class="course-card" aria-label="single course card">
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/sql.png" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">Databases and APIs</h2>
-                    <p class="language-name">SQL</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-
-                    </div>
-                    <footer>
-                        <p class="author">Author: Madison Davis</p>
-                    </footer>
-                </div>
-            </section>
-            <div class="vertical-space"></div>
-            <section class="course-card" aria-label="single course card">
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/nosql.png" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">Databases and APIs</h2>
-                    <p class="language-name">NoSQL</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-
-                    </div>
-                    <footer>
-                        <p class="author">Author: Isabella Wilson</p>
-                    </footer>
-                </div>
-            </section>
-            <div class="vertical-space"></div>
-            <section class="course-card" aria-label="single course card">
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/restapi.jpeg" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">Databases and APIs</h2>
-                    <p class="language-name">REST APIs</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-
-                    </div>
-                    <footer>
-                        <p class="author">Author: Jacob Garcia</p>
-                    </footer>
-                </div>
-            </section>
-            <div class="vertical-space"></div>
-            <section class="course-card" aria-label="single course card">
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/graphql.png" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">Databases and APIs</h2>
-                    <p class="language-name">GraphQL</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-
-                    </div>
-                    <footer>
-                        <p class="author">Author: Mia Brown</p>
-                    </footer>
-                </div>
-            </section>
-            <div class="vertical-space"></div>
-            <section class="course-card" aria-label="single course card">
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/oauth.png" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">Web Development Concepts Technologies</h2>
-                    <p class="language-name">OAuth</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-
-                    </div>
-                    <footer>
-                        <p class="author">Author: Mia Brown</p>
-                    </footer>
-                </div>
-            </section>
-            <div class="vertical-space"></div>
-            <section class="course-card" aria-label="single course card">
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/json.png" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">Web Development Concepts Technologies</h2>
-                    <p class="language-name">JSON</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-
-                    </div>
-                    <footer>
-                        <p class="author">Author: Mia Brown</p>
-                    </footer>
-                </div>
-            </section>
-            <div class="vertical-space"></div>
-            <section class="course-card" aria-label="single course card">
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/json.png" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">Web Development Concepts Technologies</h2>
-                    <p class="language-name">JSON</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-
-                    </div>
-                    <footer>
-                        <p class="author">Author: Liam Hernandez</p>
-                    </footer>
-                </div>
-            </section>
-            <div class="vertical-space"></div>
-            <section class="course-card" aria-label="single course card">
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/ajax.gif" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">Web Development Concepts Technologies</h2>
-                    <p class="language-name">AJAX</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-
-                    </div>
-                    <footer>
-                        <p class="author">Author: Avery Perez</p>
-                    </footer>
-                </div>
-            </section>
-            <div class="vertical-space"></div>
-            <section class="course-card" aria-label="single course card">
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/websockets.png" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">Web Development Concepts Technologies</h2>
-                    <p class="language-name">Websockets</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-
-                    </div>
-                    <footer>
-                        <p class="author">Author: Victoria Kim</p>
-                    </footer>
-                </div>
-            </section>
-            <div class="vertical-space"></div>
-            <section class="course-card" aria-label="single course card">
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/responsive.gif" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">Web Development Concepts Technologies</h2>
-                    <p class="language-name">Responsive Design</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-                    </div>
-                    <footer>
-                        <p class="author">Author: Ryan Jones</p>
-                    </footer>
-                </div>
-            </section>
+<!--            course card goes here-->
         </div>
     </section>
 </main>
-
-<!--Footer HTML Structure-->
 <footer>
     <div class="copyrights">
         <p>Developed with ❤️ © 2023</p>
     </div>
 </footer>
+<!--Favorite Modal-->
+<div id="favorite-modal" class="favorite-modal">
+    <div class="modal-content">
+        <h2>My Favourite Topics</h2>
+        <div class="favorite-courses-list">
+            <div class="favorite-course-card">
+                <div class="favorite-course-card-image-container">
+                    <img class="favorite-course-image" src="assets/Logos/html.png">
+                </div>
+                <div class="favorite-course-card-body">
+                    <h3>HTML</h3>
+                    <div class="rating-stars">
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="favorite-course-card">
+                <div class="favorite-course-card-image-container">
+                    <img class="favorite-course-image" src="assets/Logos/html.png">
+                </div>
+                <div class="favorite-course-card-body">
+                    <h3>HTML</h3>
+                    <div class="rating-stars">
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star"></ion-icon>
+                        <ion-icon name="star-outline"></ion-icon>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Footer HTML Structure-->
+
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <script src="script.js"></script>
