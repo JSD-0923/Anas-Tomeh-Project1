@@ -18,30 +18,16 @@ const themeMode = () => {
 }
 
 
-// opening - closing modal of favorite topics
-const openFavoriteModal = () => {
-
-    const favoriteModal = document.getElementById('favorite-modal');
-
-    if (favoriteModal.style.display === 'none' || favoriteModal.style.display === '') {
-        favoriteModal.style.display = 'block';
-    } else {
-        favoriteModal.style.display = 'none';
-    }
-}
-
-const favoriteButton = document.getElementById('favorite-button');
-favoriteButton.addEventListener('click', openFavoriteModal)
-
-
 // Fetching Topics
 let topics = [];
+let filteredTopics = []
 const fetchTopics = async (searchQuery) => {
     try {
         const response = await fetch(searchQuery
             ? `https://tap-web-1.herokuapp.com/topics/list?phrase=${searchQuery}`
             : `https://tap-web-1.herokuapp.com/topics/list`);
         topics = await response.json();
+        filteredTopics = [...topics];
 
         renderTopics()
     } catch (error) {
@@ -55,15 +41,37 @@ const sortBySelect = document.getElementById("sort-by");
 const sortTopics = (sortBy) => {
 
     if (sortBy === 'default') {
-        topics.sort((a, b) => a.id - b.id);
+        filteredTopics.sort((a, b) => a.id - b.id);
     }
     else if (sortBy === "topic-title") {
-        topics.sort((a, b) => a.topic.localeCompare(b.topic));
+        filteredTopics.sort((a, b) => a.topic.localeCompare(b.topic));
     }
     else if (sortBy === "author-name") {
-        topics.sort((a, b) => a.name.localeCompare(b.name));
+        filteredTopics.sort((a, b) => a.name.localeCompare(b.name));
     }
     renderTopics();
+}
+
+const filterTopics = () => {
+    const filterElement = document.getElementById("filter-by");
+    filterElement.innerHTML = '<option value="default">Default</option>';
+
+    const filterOptions = topics.map(option => option.category).filter((category, index, self) => self.indexOf(category) === index);
+
+    filterOptions.map(optionData => {
+        const option = document.createElement("option");
+        option.value = optionData;
+        option.text = optionData;
+        filterElement.appendChild(option);
+    });
+
+    filterElement.addEventListener('change', () => {
+        const selectedValue = filterElement.value;
+        filteredTopics = selectedValue === 'default'
+            ? topics
+            : topics.filter(topic => topic.category === selectedValue);
+        renderTopics();
+    });
 }
 
 // Register the event listener for the "change" event
@@ -71,6 +79,7 @@ sortBySelect.addEventListener('change', (event) => {
     const selectedValue = event.target.value;
     sortTopics(selectedValue);
 });
+
 
 const searchInput = document.querySelector('#searchInput');
 
@@ -99,53 +108,42 @@ const renderTopics = () => {
     const numberOfResultsElement = document.querySelector(".number-of-results");
     const topicContainer = document.querySelector(".search-results-cards");
     const searchResults = document.querySelector('.search-results');
-    const selectElement = document.getElementById("filter-by");
 
     try {
         loadingIndicator.style.display = "block";
 
-        numberOfResultsElement.textContent = `"${topics.length}" Web Topics Found`;
+        numberOfResultsElement.textContent = filteredTopics.length > 0 ? `"${filteredTopics.length}" Web Topics Found` : 'No Web Topics Found !!';
 
         topicContainer.innerHTML = '';
 
 
-
-        const filterOptions = topics.map(option => option.category).filter((category, index, self) => self.indexOf(category) === index);
-
-
-        filterOptions.forEach(optionData => {
-            const option = document.createElement("option");
-            option.value = optionData;
-            option.text = optionData;
-            selectElement.appendChild(option);
-        });
-
-
-        topics.map((topic) => {
+        filteredTopics.map((topic) => {
             const card = document.createElement("section");
             card.classList.add("course-card");
             card.setAttribute("aria-label", "single course card");
 
             card.innerHTML = `
-                <div class="course-image-container">
-                    <img class="course-image" src="./assets/Logos/${topic.image}" alt="Course Image">
-                </div>
-                <div class="card-info">
-                    <h2 class="course-title">${topic.category}</h2>
-                    <p class="language-name">${topic.topic}</p>
-                    <div class="rating-stars">
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star"></ion-icon>
-                        <ion-icon name="star-outline"></ion-icon>
-                    </div>
-                    <footer>
-                        <p class="author">Author: ${topic.name}</p>
-                    </footer>
-                </div>
-                <div class="vertical-space"></div>
-            `;
+    <a href="details/details.html?id=${topic.id}">
+        <div class="course-image-container">
+            <img class="course-image" src="./assets/Logos/${topic.image}" alt="Course Image">
+        </div>
+        <div class="card-info">
+            <h2 class="course-title">${topic.category}</h2>
+            <p class="language-name">${topic.topic}</p>
+            <div class="rating-stars">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+            </div>
+            <footer>
+                <p class="author">Author: ${topic.name}</p>
+            </footer>
+        </div>
+        <div class="vertical-space"></div>
+    </a>
+`;
             topicContainer.appendChild(card);
         });
 
@@ -160,5 +158,14 @@ const renderTopics = () => {
 window.onload = async function () {
     await fetchTopics();
     renderTopics();
+    filterTopics()
 };
 
+//  Re-render home page when clicking on page title
+
+const webTopicsHeading = document.getElementById('webTopicsHeading');
+webTopicsHeading.addEventListener('click', async () => {
+    await fetchTopics();
+    renderTopics();
+    filterTopics()
+});

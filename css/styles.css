@@ -12,6 +12,10 @@ li {
     list-style-type: none;
 }
 
+a {
+    text-decoration: none;
+}
+
 :root {
     --brand-primary-color: var(--brand-primary);
     --brand-secondry-color: var(--brand-secondary);
@@ -127,6 +131,7 @@ select{
     color: var(--brand-primary-color);
     font-size: var(--lg);
     font-weight: var(--font-weight-light);
+    cursor: pointer;
 }
 
 .web-controls-mobile {
