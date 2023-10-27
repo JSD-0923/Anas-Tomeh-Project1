@@ -17,46 +17,49 @@ const themeMode = () => {
     }
 }
 
+let _data
 
 // Fetching Topics
-let topics = [];
-let filteredTopics = []
+
 const fetchTopics = async (searchQuery) => {
     try {
         const response = await fetch(searchQuery
             ? `https://tap-web-1.herokuapp.com/topics/list?phrase=${searchQuery}`
             : `https://tap-web-1.herokuapp.com/topics/list`);
-        topics = await response.json();
-        filteredTopics = [...topics];
+        let topics = await response.json();
+       let filteredTopics = [...topics];
 
-        renderTopics()
+        return {
+            'topics': topics,
+            'filteredTopics': filteredTopics
+        }
+
     } catch (error) {
         throw error;
     }
 };
 
+
 // sorting topics
 const sortBySelect = document.getElementById("sort-by");
 
-const sortTopics = (sortBy) => {
-
+const sortTopics = (data, sortBy) => {
     if (sortBy === 'default') {
-        filteredTopics.sort((a, b) => a.id - b.id);
+        data.sort((a, b) => a.id - b.id);
+    } else if (sortBy === "topic-title") {
+        data.sort((a, b) => a.topic.localeCompare(b.topic));
+    } else if (sortBy === "author-name") {
+        data.sort((a, b) => a.name.localeCompare(b.name));
     }
-    else if (sortBy === "topic-title") {
-        filteredTopics.sort((a, b) => a.topic.localeCompare(b.topic));
-    }
-    else if (sortBy === "author-name") {
-        filteredTopics.sort((a, b) => a.name.localeCompare(b.name));
-    }
-    renderTopics();
+    renderTopics(data);
 }
 
-const filterTopics = () => {
+
+const filterTopics = (data) => {
     const filterElement = document.getElementById("filter-by");
     filterElement.innerHTML = '<option value="default">Default</option>';
 
-    const filterOptions = topics.map(option => option.category).filter((category, index, self) => self.indexOf(category) === index);
+    const filterOptions = data.topics.map(option => option.category).filter((category, index, self) => self.indexOf(category) === index);
 
     filterOptions.map(optionData => {
         const option = document.createElement("option");
@@ -67,18 +70,19 @@ const filterTopics = () => {
 
     filterElement.addEventListener('change', () => {
         const selectedValue = filterElement.value;
-        filteredTopics = selectedValue === 'default'
-            ? topics
-            : topics.filter(topic => topic.category === selectedValue);
-        renderTopics();
+        let filteredTopics = selectedValue === 'default'
+            ? data.topics
+            : data.topics.filter(topic => topic.category === selectedValue);
+        renderTopics(filteredTopics);
+        _data.filteredTopics = filteredTopics;
     });
 }
 
-// Register the event listener for the "change" event
 sortBySelect.addEventListener('change', (event) => {
     const selectedValue = event.target.value;
-    sortTopics(selectedValue);
+    sortTopics(_data.filteredTopics, selectedValue); // Use _data.filteredTopics for sorting
 });
+
 
 
 const searchInput = document.querySelector('#searchInput');
@@ -88,22 +92,35 @@ const debounceInputs = (func, delay) => {
     let timer;
     return function (...args) {
         clearTimeout(timer);
-        timer = setTimeout(() => {
-            func.apply(this, args);
-        }, delay);
+        return new Promise((resolve, reject) => {
+            timer = setTimeout(async () => {
+                try {
+                    const result = await func.apply(this, args);
+                    resolve(result);
+                } catch (error) {
+                    reject(error);
+                }
+            }, delay);
+        });
     };
 };
 
 // create a debounced version of the fetchTopics function
 const debouncedFetchTopics = debounceInputs(fetchTopics, 300);
 
-searchInput.addEventListener('input', (event) => {
+searchInput.addEventListener('input', async (event) => {
     const searchQuery = event.target.value.trim(); // Trim whitespace
-    debouncedFetchTopics(searchQuery);
+
+    try {
+        const data = await debouncedFetchTopics(searchQuery);
+        renderTopics(data.topics);
+    } catch (error) {
+        console.error(error);
+    }
 });
 
 // Rendering the Fetched Data
-const renderTopics = () => {
+const renderTopics = (data) => {
     const loadingIndicator = document.querySelector('.loading-indicator');
     const numberOfResultsElement = document.querySelector(".number-of-results");
     const topicContainer = document.querySelector(".search-results-cards");
@@ -112,12 +129,12 @@ const renderTopics = () => {
     try {
         loadingIndicator.style.display = "block";
 
-        numberOfResultsElement.textContent = filteredTopics.length > 0 ? `"${filteredTopics.length}" Web Topics Found` : 'No Web Topics Found !!';
+        numberOfResultsElement.textContent = data.length > 0 ? `"${data.length}" Web Topics Found` : 'No Web Topics Found !!';
 
         topicContainer.innerHTML = '';
 
 
-        filteredTopics.map((topic) => {
+        data.map((topic) => {
             const card = document.createElement("section");
             card.classList.add("course-card");
             card.setAttribute("aria-label", "single course card");
@@ -156,16 +173,21 @@ const renderTopics = () => {
 
 // Render all topics when the page initially loads
 window.onload = async function () {
-    await fetchTopics();
-    renderTopics();
-    filterTopics()
+    const data = await fetchTopics();
+    _data = {
+        topics: data.topics,
+        filteredTopics: data.filteredTopics
+    };
+    renderTopics(data.filteredTopics); // Render filteredTopics
+    filterTopics(data);
 };
+
 
 //  Re-render home page when clicking on page title
 
 const webTopicsHeading = document.getElementById('webTopicsHeading');
 webTopicsHeading.addEventListener('click', async () => {
-    await fetchTopics();
-    renderTopics();
-    filterTopics()
+    const data = await fetchTopics();
+    renderTopics(data.topics);
+    filterTopics(data)
 });
